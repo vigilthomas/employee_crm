@@ -8,3 +8,4 @@ class Employees(models.Model):
     email=models.EmailField(unique=True)
     age=models.PositiveBigIntegerField(null=True)
     phone=models.IntegerField(max_length=10)
+
