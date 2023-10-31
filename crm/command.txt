@@ -1,0 +1,36 @@
+.........ORM Query............
+(Employees.objects.______)
+
+For creating new object....
+
+* Model example
+    
+    class Employees(models.Model):
+        name=models.CharField(max_length=100)
+        department=models.CharField(max_length=100)
+        salary=models.PositiveBigIntegerField()
+        email=models.EmailField(unique=True)
+        age=models.PositiveBigIntegerField()
+        phone=models.IntegerField()
+
+* python shell..
+
+    > from crm.models import Employees
+
+    > Employees.objects.create(name="Adil",department="Manager",salary=56000,email="adil@gmail.com",age=22,phone=9876543210)
+    
+    - display all records.....
+    > Employees.objects.all() 
+    
+    - display specific record.....
+    > Employees.objects.get(name="VIGIL")
+
+    - for filtering record.....
+    > Employees.objects.filter(department="HR") 
+    > qs=Employees.objects.filter(salary__gte=50000)
+    
+    - exclude specific record.....
+    > Employees.objects.exclude(department="HR") 
+
+    - update specific record.....
+    > Employees.objects.get(name="Shahil") 

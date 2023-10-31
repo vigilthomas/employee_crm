@@ -4,8 +4,11 @@ from django.db import models
 class Employees(models.Model):
     name=models.CharField(max_length=100)
     department=models.CharField(max_length=100)
-    salary=models.PositiveBigIntegerField(max_length=100)
+    salary=models.PositiveBigIntegerField()
     email=models.EmailField(unique=True)
-    age=models.PositiveBigIntegerField(null=True)
-    phone=models.IntegerField(max_length=10)
+    age=models.PositiveBigIntegerField()
+    phone=models.IntegerField()
+
+    def __str__(self) :
+        return self.name
 
