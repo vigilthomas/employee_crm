@@ -13,12 +13,13 @@
 </head>
 
 <body>
-    <div class="container">
-        <p class="fw-bold fs-3  mt-5">Employee List</p>
+    <div class="container text-center">
+        <p class="fw-bold fs-3  mt-5">Employee List</p><br>
         {%csrf_token%}
         <table class="table table-bordered">
             <thead class="table-dark ">
                 <tr>
+                    <th>Id</th>
                     <th>Name</th>
                     <th>Department</th>
                     <th>Salary</th>
@@ -27,17 +28,20 @@
                     <th>Phone</th>
                     <th></th>
                 </tr>
-            </thead>
+            </thead> 
 
             {% for data in datas %}
-            <tr class="">
-                <td>{{data.name}}</td>
-                <td>{{data.department}}</td>
-                <td>{{data.salary}}</td>
-                <td>{{data.email}}</td>
-                <td>{{data.age}}</td>
-                <td>{{data.phone}}</td>
-                <td class="text-center"><a><i class="fa-solid fa-trash"></i></a></td>
+            <tr>
+                <td>{{data.id}}</td>
+                <td class="text-start">{{data.name}}</td>
+                <td class="text-start">{{data.department}}</td>
+                <td class="text-start">{{data.salary}}</td>
+                <td class="text-start">{{data.email}}</td>
+                <td >{{data.age}}</td>
+                <td class="text-start">{{data.phone}}</td>
+                <td>
+                    <a href="submit" class="border-0 bg-white"><i class="fa-solid fa-trash"></i></a>
+                </td>
             </tr>
             {% endfor %}
     </div>

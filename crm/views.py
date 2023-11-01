@@ -18,9 +18,17 @@ class AddEmp(View):
         if form.is_valid():
             Employees.objects.create(**form.cleaned_data)
             print("Done")
-
         return render(request,"emp_list.html",{"form":form})
+
 class ViewEmp(View):
     def get(self,request,*args,**kwargs):
         datas=Employees.objects.all()
         return render(request,"emp_list.html",{"datas":datas})
+
+class UpdateEmp(View):
+    def get(self,request,*args,**kwargs):
+        form=EmpForm()
+        return render(request,"emp_update.html",{"form":form})   
+    def post(self,request,*args,**kwargs):
+        form=EmpForm(request.POST)
+        return render(request,"emp_list.html",{"form":form})
