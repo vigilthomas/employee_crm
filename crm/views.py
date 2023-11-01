@@ -19,4 +19,8 @@ class AddEmp(View):
             Employees.objects.create(**form.cleaned_data)
             print("Done")
 
-        return render(request,"emp_create.html",{"form":form})   
+        return render(request,"emp_list.html",{"form":form})
+class ViewEmp(View):
+    def get(self,request,*args,**kwargs):
+        datas=Employees.objects.all()
+        return render(request,"emp_list.html",{"datas":datas})

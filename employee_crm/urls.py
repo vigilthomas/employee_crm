@@ -21,4 +21,5 @@ from crm import views
 urlpatterns = [
     path('',views.Index.as_view()),
     path('add_emp/',views.AddEmp.as_view(),name="add_emp"),
+    path('view_emp/',views.ViewEmp.as_view(),name="view_emp"),
 ]
