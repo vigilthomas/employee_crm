@@ -14,6 +14,7 @@ For creating new object....
         phone=models.IntegerField()
 
 * python shell..
+    > python manage.py shell
 
     > from crm.models import Employees
 
@@ -26,11 +27,16 @@ For creating new object....
     > Employees.objects.get(name="VIGIL")
 
     - for filtering record.....
-    > Employees.objects.filter(department="HR") 
-    > qs=Employees.objects.filter(salary__gte=50000)
+    Specific Section : > Employees.objects.filter(department="HR") 
+    Salary greater than : > Employees.objects.filter(salary__gte=50000)
+    Ascending : > Employees.objects.all().order_by("salary") 
+    Desending : > Employees.objects.all().order_by("-salary")  
     
+    - for update record.....
+    > Employees.objects.filter(id="4").update(name="Shahil") 
+
     - exclude specific record.....
     > Employees.objects.exclude(department="HR") 
 
-    - update specific record.....
-    > Employees.objects.get(name="Shahil") 
+    - delete specific record.....
+    > Employees.objects.filter(id="4").delete() 

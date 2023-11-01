@@ -10,5 +10,5 @@ class Employees(models.Model):
     phone=models.IntegerField()
 
     def __str__(self) :
-        return self.name
+        return "\n "+self.name+"\n "+ self.email+" \n\n"
 
