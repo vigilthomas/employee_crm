@@ -14,11 +14,14 @@ class AddEmp(View):
         form=EmpForm()
         return render(request,"emp_create.html",{"form":form})   
     def post(self,request,*args,**kwargs):
+        flag=False
         form=EmpForm(request.POST)
         if form.is_valid():
             Employees.objects.create(**form.cleaned_data)
-            print("Done")
-        return render(request,"emp_list.html",{"form":form})
+            book="Book Added"
+            flag=True
+            print(book)
+        return render(request,"emp_list.html",{"form":form,"flag":flag})
 
 class ViewEmp(View):
     def get(self,request,*args,**kwargs):

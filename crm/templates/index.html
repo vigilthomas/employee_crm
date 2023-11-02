@@ -1,12 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ECRM</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-</head>
+{% load static %}
+{% include 'header.html' %}
+
 <style>
     .btn{
         border-radius:50px;
@@ -14,13 +10,15 @@
     }
 </style>
 <body>
-    <a class="btn btn-primary m-5" href="{% url 'add_emp' %}">Add an Employee</a>
-    <a class="btn btn-success m-5" href="{% url 'view_emp' %}">View Employees</a>
-    <a class="btn btn-warning m-5" href="{% url 'update_emp' %}">Update Employees</a>
-    <a class="btn btn-danger m-5" href="{% url 'view_emp' %}">Delete Employees</a>
+{% include 'navbar.html' %}
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
+<div class=" d-flex justify-content-around mt-5">
+    
+        <a class="btn btn-danger m-5 w-25" href="{% url 'add_emp' %}">Add an Employee</a>
+        <a class="btn btn-danger m-5 w-25" href="{% url 'view_emp' %}">View Employees</a>
+        <a class="btn btn-danger m-5 w-25" href="{% url 'update_emp' %}">Update Employees</a>
+        <a class="btn btn-danger m-5 w-25" href="{% url 'view_emp' %}">Delete Employees</a>
+    
+</div>
 </body>
 </html>
