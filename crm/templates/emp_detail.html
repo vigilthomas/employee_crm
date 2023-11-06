@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+{% include 'header.html' %}
+
+<body>
+    {% include 'navbar.html' %}
+
+    <div class="container">
+
+        <div class=" row d-flex justify-content-around mt-3 mt-lg-4">
+            {%csrf_token%}
+
+            <div class="col-lg-2 col-md-4 col-sm-12 col-12">
+                <p class="fw-bold fs-3 text-start">Employee <br> Details</p><br>
+            </div>
+
+            <div class="col-lg-10 col-md-8 col-sm-12 col-12">
+                <div class="card" style="width: 18rem;">
+                    <!-- <img src="./assets/p1.jpg" class="card-img-top" alt="..."> -->
+                    <div class="card-body">
+                        <h5 class="card-title">Name : {{data.name}}</h5>
+                        <p class="card-text">Department : {{data.department}}</p>
+                        <p class="card-text">Email : {{data.email}}</p>
+                        <p class="card-text">Age : {{data.age}}</p>
+                        <p class="card-text">Phone : {{data.phone}}</p>
+                        <p class="card-text">Salary : {{data.salary}}</p>
+                        <a href="{% url 'view_emp' %}" class="btn btn-primary">Go Back</a>
+                        <a href="#" class="btn btn-danger">Update</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+<div class="card-body">
+    
+</div>

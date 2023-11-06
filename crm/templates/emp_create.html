@@ -3,17 +3,24 @@
 {% load static %}
 {% include 'header.html' %}
 
-<!-- book_name=forms.CharField(label="Book Name ",widget=forms.TextInput(attrs={"class":"form-control m-2"})) -->
-
 <body>
-    {%csrf_token%}
     {% include 'navbar.html' %}
 
     <div class="d-flex justify-content-center">
-        <form class="fs-6 fw-normal bg-light w-50 p-5">
+        <form class="fs-6 fw-normal bg-light w-50 p-5" method="post">
+            {%csrf_token%}
+
             <p class="fw-bold fs-3 ">Add Employee</p>
             <hr class="border border-danger border-3 opacity-75 w-25">
-
+            <br>
+            {% if flag %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Email Already Exist !... </strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% else %}
+                
+            {% endif %}
             <br>
             {{form.as_p}}
             <div class="d-flex justify-content-center ">

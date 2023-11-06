@@ -19,8 +19,10 @@ from django.urls import path
 from crm import views
 
 urlpatterns = [
-    path('',views.Index.as_view(),name="home"),
-    path('add_emp/',views.AddEmp.as_view(),name="add_emp"),
-    path('view_emp/',views.ViewEmp.as_view(),name="view_emp"),
-    path('update_emp/',views.UpdateEmp.as_view(),name="update_emp"),
+    path('', views.Index.as_view(), name="home"),
+    path('add_emp/', views.AddEmp.as_view(), name="add_emp"),
+    path('view_emp/', views.ViewEmp.as_view(), name="view_emp"),
+    path('id=<int:pk>', views.DetailEmp.as_view(), name="detail_emp"),
+    path('update_emp/', views.UpdateEmp.as_view(), name="update_emp"),
+
 ]

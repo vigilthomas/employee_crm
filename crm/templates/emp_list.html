@@ -16,25 +16,23 @@
                     <th>Id</th>
                     <th>Name</th>
                     <th>Department</th>
-                    <th>Salary</th>
                     <th>Email</th>
-                    <th>Age</th>
-                    <th>Phone</th>
-                    <th></th>
+                    <th>View</th>
+                    <th>Delete</th>
                 </tr>
-            </thead> 
+            </thead>
 
             {% for data in datas %}
             <tr class="text-start">
-                <td>{{data.id}}</td>
+                <td class="text-center">{{data.id}}</td>
                 <td class="">{{data.name}}</td>
                 <td class="">{{data.department}}</td>
-                <td class="">{{data.salary}}</td>
                 <td class="">{{data.email}}</td>
-                <td >{{data.age}}</td>
-                <td class="">{{data.phone}}</td>
-                <td>
-                    <a href="submit" class="border-0 text-danger"><i class="fa-solid fa-trash"></i></a>
+                <td class="text-center">
+                    <a href="{% url 'detail_emp' data.id %}" class="border-0  btn btn-success"> &nbsp;<i class="fa-solid fa-eye"></i>&nbsp;</a>
+                </td>
+                <td class="text-center">
+                    <a href="{% url 'detail_emp' data.id %}" class="border-0  btn btn-danger"> &nbsp;<i class="fa-solid fa-trash"></i>&nbsp;</a>
                 </td>
             </tr>
             {% endfor %}
