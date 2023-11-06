@@ -10,6 +10,10 @@
     <div class="container text-center">
         <p class="fw-bold fs-3  mt-5">Employee List</p><br>
         {%csrf_token%}
+        <form class="d-flex m-5" role="search">
+            <input class="form-control me-2" name="box">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
         <table class="table table-bordered">
             <thead class="table-dark ">
                 <tr>
@@ -32,7 +36,7 @@
                     <a href="{% url 'detail_emp' data.id %}" class="border-0  btn btn-success"> &nbsp;<i class="fa-solid fa-eye"></i>&nbsp;</a>
                 </td>
                 <td class="text-center">
-                    <a href="{% url 'detail_emp' data.id %}" class="border-0  btn btn-danger"> &nbsp;<i class="fa-solid fa-trash"></i>&nbsp;</a>
+                    <a href="{% url 'delete_emp' data.id %}" class="border-0  btn btn-danger"> &nbsp;<i class="fa-solid fa-trash"></i>&nbsp;</a>
                 </td>
             </tr>
             {% endfor %}

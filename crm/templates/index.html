@@ -11,12 +11,15 @@
 </style>
 <body>
 {% include 'navbar.html' %}
-
+<form class="d-flex" role="search">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
 <div class=" d-flex justify-content-around mt-5">
     
         <a class="btn btn-danger m-5 w-25" href="{% url 'add_emp' %}">Add an Employee</a>
         <a class="btn btn-danger m-5 w-25" href="{% url 'view_emp' %}">View Employees</a>
-        <a class="btn btn-danger m-5 w-25" href="{% url 'update_emp' %}">Update Employees</a>
+        <a class="btn btn-danger m-5 w-25" href="{% url 'view_emp' %}">Update Employees</a>
         <a class="btn btn-danger m-5 w-25" href="{% url 'view_emp' %}">Delete Employees</a>
     
 </div>

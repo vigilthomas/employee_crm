@@ -20,9 +20,10 @@ from crm import views
 
 urlpatterns = [
     path('', views.Index.as_view(), name="home"),
-    path('add_emp/', views.AddEmp.as_view(), name="add_emp"),
-    path('view_emp/', views.ViewEmp.as_view(), name="view_emp"),
-    path('id=<int:pk>', views.DetailEmp.as_view(), name="detail_emp"),
-    path('update_emp/', views.UpdateEmp.as_view(), name="update_emp"),
+    path('emp/add/', views.AddEmp.as_view(), name="add_emp"),
+    path('emp/list/', views.ViewEmp.as_view(), name="view_emp"),
+    path('emp/<int:pk>/details/', views.DetailEmp.as_view(), name="detail_emp"),
+    path('emp/<int:pk>/delete/', views.DeleteEmp.as_view(), name="delete_emp"),
+    path('emp/<int:pk>/update/', views.UpdateEmp.as_view(), name="update_emp")
 
 ]
