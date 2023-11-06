@@ -5,11 +5,11 @@ from crm.models import *
 # Create your views here.
 
 
-class Index(View):
+class ViewHome(View):
     def get(self,request,*args,**kwargs):
         return render(request,"index.html")
 
-class AddEmp(View):
+class ViewAddEmp(View):
     def get(self,request,*args,**kwargs):
         form=EmpModelForm()
         return render(request,"emp_create.html",{"form":form})   
@@ -20,34 +20,34 @@ class AddEmp(View):
             addemp="Employee Added"
             success="success"
             print(addemp)
-            return render(request,"emp_list.html",{"flag":success})   
+            return redirect("view_emp")
         else:
             error="error"
             print(error)
             return render(request,"emp_create.html",{"form":form,"flag":error})
 
-class ViewEmp(View):
+class ViewEmpList(View):
     def get(self,request,*args,**kwargs):
         datas=Employees.objects.all()
         return render(request,"emp_list.html",{"datas":datas})
     def post(self,request,*args,**kwargs):
-        id=request.POST.get("box")
-        datas=Employees.objects.filter(id=id)
+        name=request.POST.get("box")
+        datas=Employees.objects.filter(name=name)
         return render(request,"emp_list.html",{"datas":datas})
 
-class DetailEmp(View):
+class ViewEmpDetail(View):
     def get(self,request,*args,**kwargs):
         id=kwargs.get("pk")
         qs=Employees.objects.get(id=id)
         return render(request,"emp_detail.html",{"data":qs})
     
-class DeleteEmp(View):
+class ViewEmpDelete(View):
     def get(request,*args,**kwargs):
         id=kwargs.get("pk")
         Employees.objects.get(id=id).delete()
         return redirect("view_emp")
 
-class UpdateEmp(View):
+class ViewEmpUpdate(View):
     def get(self,request,*args,**kwargs):
         id=kwargs.get("pk")
         qs=Employees.objects.get(id=id)

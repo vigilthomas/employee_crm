@@ -8,13 +8,14 @@
     {% include 'navbar.html' %}
 
     <div class="container text-center">
-        <p class="fw-bold fs-3  mt-5">Employee List</p><br>
-        {%csrf_token%}
-        <form class="d-flex m-5" role="search">
-            <input class="form-control me-2" name="box">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+        <p class="fw-bold fs-3 text-decoration-underline mt-5">Employee List</p><br>
+        <form class="d-flex mb-5" role="search" method="post">
+            {%csrf_token%}
+            <a class="btn btn-danger " href="{% url 'view_emp' %}">Refresh</a>
+            <input class="form-control mx-2" name="box">
+            <button class="btn btn-danger" type="submit">Search</button>
         </form>
-        <table class="table table-bordered">
+        <table class="table table-bordered ">
             <thead class="table-dark ">
                 <tr>
                     <th>Id</th>
@@ -32,11 +33,13 @@
                 <td class="">{{data.name}}</td>
                 <td class="">{{data.department}}</td>
                 <td class="">{{data.email}}</td>
-                <td class="text-center">
-                    <a href="{% url 'detail_emp' data.id %}" class="border-0  btn btn-success"> &nbsp;<i class="fa-solid fa-eye"></i>&nbsp;</a>
+                <td class="text-center bg-danger">
+                    <a href="{% url 'detail_emp' data.id %}" class="border-0 text-white">
+                        <i class="fa-solid fa-eye"></i></a>
                 </td>
-                <td class="text-center">
-                    <a href="{% url 'delete_emp' data.id %}" class="border-0  btn btn-danger"> &nbsp;<i class="fa-solid fa-trash"></i>&nbsp;</a>
+                <td class="text-center bg-danger">
+                    <a href="{% url 'delete_emp' data.id %}" class="border-0 text-white">
+                        <i class="fa-solid fa-trash"></i></a>
                 </td>
             </tr>
             {% endfor %}
