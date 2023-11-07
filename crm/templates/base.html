@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECRM</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</head>
+<style>
+    /* html{
+        width: fit-content;
+    } */
+    body {
+        background-color: #e4e4e4;
+    }
+
+    .errorlist {
+        display: none;
+
+    }
+</style>
+<body>
+    <nav class="navbar navbar-expand-lg bg-danger p-3">
+        <div class="container  ">
+            <a class="navbar-brand text-white fw-bold" href="{% url 'home' %}">ECRM</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto fs-6 fw-bold mx-2">
+                    <li class="nav-item">
+                        <a class="nav-link text-white text-center mx-3" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white text-center mx-3" href="{% url 'add_emp' %}">Add</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white text-center mx-3" href="{% url 'view_emp' %}"> List</a>
+                    </li>
+                </ul>
+                <form class="d-flex mx-4" role="search" method="post" action="{% url 'view_emp' %}">
+                    {%csrf_token%}
+                    <input class="form-control" name="box" placeholder="Search Employee Here..">
+                    <button class="btn btn-dark mx-1" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    {%block body_block%}
+    
+    {%endblock%}
+</body>
+</html>

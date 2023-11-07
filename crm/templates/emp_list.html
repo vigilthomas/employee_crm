@@ -1,50 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
+{%extends 'base.html'%}
+{%block body_block%}
 
-{% load static %}
-{% include 'header.html' %}
-
-<body>
-    {% include 'navbar.html' %}
-
-    <div class="container text-center">
-        <p class="fw-bold fs-3 text-decoration-underline mt-5">Employee List</p><br>
-        <form class="d-flex mb-5" role="search" method="post">
-            {%csrf_token%}
-            <a class="btn btn-danger " href="{% url 'view_emp' %}">Refresh</a>
-            <input class="form-control mx-2" name="box">
-            <button class="btn btn-danger" type="submit">Search</button>
-        </form>
-        <table class="table table-bordered ">
-            <thead class="table-dark ">
-                <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Department</th>
-                    <th>Email</th>
-                    <th>View</th>
-                    <th>Delete</th>
-                </tr>
-            </thead>
-
-            {% for data in datas %}
-            <tr class="text-start">
-                <td class="text-center">{{data.id}}</td>
-                <td class="">{{data.name}}</td>
-                <td class="">{{data.department}}</td>
-                <td class="">{{data.email}}</td>
-                <td class="text-center bg-danger">
-                    <a href="{% url 'detail_emp' data.id %}" class="border-0 text-white">
-                        <i class="fa-solid fa-eye"></i></a>
-                </td>
-                <td class="text-center bg-danger">
-                    <a href="{% url 'delete_emp' data.id %}" class="border-0 text-white">
-                        <i class="fa-solid fa-trash"></i></a>
-                </td>
+<div class="container text-center">
+    <p class="fw-bold fs-3 text-decoration-underline mt-5">Employee List</p><br>
+    <form class="d-flex mb-5" role="search" method="post">
+        {%csrf_token%}
+        <a class="btn btn-danger " href="{% url 'view_emp' %}">Refresh</a>
+        <input class="form-control mx-2" name="box" value="{{name}}">
+        <button class="btn btn-danger" type="submit">Search</button>
+    </form>
+    <table class="table table-bordered ">
+        <thead class="table-dark ">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Email</th>
+                <th>View</th>
+                <th>Update</th>
+                <th>Delete</th>
             </tr>
-            {% endfor %}
-    </div>
+        </thead>
 
-</body>
+        {% for data in datas %}
+        <tr class="text-start">
+            <td class="text-center">{{data.id}}</td>
+            <td class="">{{data.name}}</td>
+            <td class="">{{data.department}}</td>
+            <td class="">{{data.email}}</td>
+            <td class="text-center bg-danger" style="width: 1%;">
+                <a href="{% url 'detail_emp' data.id %}" class="border-0 text-white">
+                    <i class="fa-solid fa-eye"></i></a>
+            </td>
+            <td class="text-center bg-danger" style="width: 1%;">
+                <a href="{% url 'update_emp' data.id %}" class="border-0 text-white">
+                    <i class="fa-solid fa-pen"></i></a>
+            </td>
+            <td class="text-center bg-danger" style="width: 1%;">
+                <a href="{% url 'delete_emp' data.id %}" class="border-0 text-white">
+                    <i class="fa-solid fa-trash"></i></a>
+            </td>
+        </tr>
+        {% endfor %}
+</div>
 
-</html>
+
+{%endblock%}

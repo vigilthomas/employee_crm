@@ -6,10 +6,13 @@ class EmpModelForm(forms.ModelForm):
         model=Employees
         fields="__all__"
         widgets={
-            'name' :forms.TextInput(attrs={"class":"form-control"}),
+            'name' :forms.TextInput(attrs={"class":"form-control",'placeholder':"Vigil"}),
             'department' :forms.TextInput(attrs={"class":"form-control"}),
             'email' :forms.TextInput(attrs={"class":"form-control"}),
             'phone' :forms.TextInput(attrs={"class":"form-control"}),
             'age' :forms.TextInput(attrs={"class":"form-control"}),
             'salary' :forms.TextInput(attrs={"class":"form-control"})
+        }
+        labels ={
+            'name': "Name of the Employee "
         }

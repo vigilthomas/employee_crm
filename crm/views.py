@@ -32,8 +32,8 @@ class ViewEmpList(View):
         return render(request,"emp_list.html",{"datas":datas})
     def post(self,request,*args,**kwargs):
         name=request.POST.get("box")
-        datas=Employees.objects.filter(name=name)
-        return render(request,"emp_list.html",{"datas":datas})
+        datas=Employees.objects.filter(name__icontains=name)
+        return render(request,"emp_list.html",{"datas":datas,'name':name})
 
 class ViewEmpDetail(View):
     def get(self,request,*args,**kwargs):

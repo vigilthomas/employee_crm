@@ -1,24 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-{% load static %}
-{% include 'header.html' %}
+{%extends 'base.html'%}
+{%block body_block%}
 
-<style>
-    .btn{
-        border-radius:50px;
-        padding: 15px;
-    }
-</style>
-<body>
-{% include 'navbar.html' %}
+<div class="container text-center">
+    <div class=" d-flex justify-content-around mt-5 row">
 
-<div class=" d-flex justify-content-around mt-5">
-    
         <a class="btn btn-danger m-5 w-25" href="{% url 'add_emp' %}">Add an Employee</a>
         <a class="btn btn-danger m-5 w-25" href="{% url 'view_emp' %}">View Employees</a>
         <a class="btn btn-danger m-5 w-25" href="{% url 'view_emp' %}">Update Employees</a>
         <a class="btn btn-danger m-5 w-25" href="{% url 'view_emp' %}">Delete Employees</a>
-    
+
+    </div>
 </div>
-</body>
-</html>
+
+
+{%endblock%}
