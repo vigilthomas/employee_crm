@@ -2,7 +2,7 @@
 {%block body_block%}
 
 <div class="container text-center">
-    <p class="fw-bold fs-3 text-decoration-underline mt-5">Employee List</p><br>
+    <p class="fw-bold fs-3 text-white text-decoration-underline mt-5">Employee List</p><br>
     <form class="d-flex mb-5" role="search" method="post">
         {%csrf_token%}
         <a class="btn btn-danger " href="{% url 'view_emp' %}">Refresh</a>

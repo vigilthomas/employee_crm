@@ -1,7 +1,10 @@
 from django.shortcuts import render,redirect
 from django.views import View
+from django.contrib import messages
+
 from crm.form import *
 from crm.models import *
+
 # Create your views here.
 
 
@@ -17,14 +20,13 @@ class ViewAddEmp(View):
         form=EmpModelForm(request.POST)
         if form.is_valid():
             form.save()
-            addemp="Employee Added"
-            success="success"
-            print(addemp)
+            messages.success(request," Employee Added Successfully..")
+            print("Success")
             return redirect("view_emp")
         else:
-            error="error"
-            print(error)
-            return render(request,"emp_create.html",{"form":form,"flag":error})
+            messages.error(request,"Failed to Add Employee..")
+            print("error")
+            return render(request,"emp_create.html",{"form":form})
 
 class ViewEmpList(View):
     def get(self,request,*args,**kwargs):
@@ -42,9 +44,10 @@ class ViewEmpDetail(View):
         return render(request,"emp_detail.html",{"data":qs})
     
 class ViewEmpDelete(View):
-    def get(request,*args,**kwargs):
+    def get(self,request,*args,**kwargs):
         id=kwargs.get("pk")
         Employees.objects.get(id=id).delete()
+        messages.success(request," Employee Deleted Successfully..")
         return redirect("view_emp")
 
 class ViewEmpUpdate(View):
@@ -59,10 +62,10 @@ class ViewEmpUpdate(View):
         form=EmpModelForm(request.POST,instance=qs)
         if form.is_valid():
             form.save()
-            success="success"
-            print(success)
+            messages.success(request," Employee Updated Successfully..")
+            print("success")
             return redirect("detail_emp",pk=id)   
         else:
-            error="error"
-            print(error)
-            return render(request,"emp_update.html",{"form":form,"flag":error})
+            print("error")
+            messages.error(request," Failed to Update Employee Details..")
+            return render(request,"emp_update.html",{"form":form})
