@@ -2,7 +2,7 @@
 {%block body_block%}
 
 <div class="d-flex justify-content-center">
-    <form class="fs-6 fw-normal bg-light w-50 p-5" method="post">
+    <form class="fs-6 fw-normal bg-light w-50 p-5" method="post" enctype="multipart/form-data">
         {%csrf_token%}
         <p class="fw-bold fs-3 ">Update Employee Details</p>
         <hr class="border border-danger border-3 opacity-75 w-25">

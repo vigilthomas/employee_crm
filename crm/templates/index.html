@@ -2,6 +2,7 @@
 {%block body_block%}
 <style>
     html {
+        width: 100%;
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
@@ -9,20 +10,22 @@
     }
 
     body {
+        width: 100%;
         background: rgb(220, 53, 69);
         background: linear-gradient(90deg, rgba(220, 53, 69, 0.8268557422969187) 14%, rgba(220, 53, 69, 0.6896008403361344) 40%, rgba(220, 53, 69, 0.5187324929971988) 59%, rgba(255, 255, 255, 0) 100%);
     }
 </style>
-<div class="container text-center">
-    <div class="d-flex flex-column align-content-lg-end align-content-around mt-5 row">
 
-        <a class="col btn btn-danger m-3 p-3 w-auto shadow-lg p-3 mb-lg-5" href="{% url 'add_emp' %}">Add an
+<div class="container text-center d-flex flex-column justify-content-end ">
+    <div class="">
+
+        <a class="btn btn-danger m-3 p-3 fw-bold fs-6 w-auto shadow-lg p-3" href="{% url 'add_emp' %}">Add an
             Employee</a>
-        <a class="col btn btn-danger m-3 p-3 w-auto shadow-lg p-3 mb-lg-5" href="{% url 'view_emp' %}">View
+        <a class="btn btn-danger m-3 p-3 fw-bold fs-6 w-auto shadow-lg p-3" href="{% url 'view_emp' %}">View
             Employees</a>
-        <a class="col btn btn-danger m-3 p-3 w-auto shadow-lg p-3 mb-lg-5" href="{% url 'view_emp' %}">Update
+        <a class="btn btn-danger m-3 p-3 fw-bold fs-6 w-auto shadow-lg p-3" href="{% url 'view_emp' %}">Update
             Employees</a>
-        <a class="col btn btn-danger m-3 p-3 w-auto shadow-lg p-3 mb-lg-5 " href="{% url 'view_emp' %}">Delete
+        <a class="btn btn-danger m-3 p-3 fw-bold fs-6 w-auto shadow-lg p-3 " href="{% url 'view_emp' %}">Delete
             Employees</a>
 
     </div>

@@ -14,8 +14,9 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 from crm import views
 
 urlpatterns = [
@@ -26,4 +27,4 @@ urlpatterns = [
     path('employee/<int:pk>/delete/', views.ViewEmpDelete.as_view(), name="delete_emp"),
     path('employee/<int:pk>/update/', views.ViewEmpUpdate.as_view(), name="update_emp")
 
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

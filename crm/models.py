@@ -8,7 +8,7 @@ class Employees(models.Model):
     email=models.EmailField(unique=True)
     age=models.PositiveBigIntegerField()
     phone = models.IntegerField()
-    image = models.ImageField(upload_to="assests/emp_img",null=True)
+    profile_pic = models.ImageField(upload_to="assests/emp_img",null=True)
 
     def __str__(self) :
         return "\n\n "+self.name+ "\t"+self.email

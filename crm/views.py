@@ -17,7 +17,7 @@ class ViewAddEmp(View):
         form=EmpModelForm()
         return render(request,"emp_create.html",{"form":form})   
     def post(self,request,*args,**kwargs):
-        form=EmpModelForm(request.POST)
+        form=EmpModelForm(request.POST,files=request.FILES)
         if form.is_valid():
             form.save()
             messages.success(request," Employee Added Successfully..")
@@ -59,7 +59,7 @@ class ViewEmpUpdate(View):
     def post(self,request,*args,**kwargs):
         id=kwargs.get("pk")
         qs=Employees.objects.get(id=id)
-        form=EmpModelForm(request.POST,instance=qs)
+        form = EmpModelForm(request.POST,files=request.FILES, instance=qs)
         if form.is_valid():
             form.save()
             messages.success(request," Employee Updated Successfully..")

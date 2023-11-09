@@ -13,7 +13,7 @@ class EmpModelForm(forms.ModelForm):
             'phone': forms.TextInput(attrs={"class": "form-control"}),
             'age': forms.TextInput(attrs={"class": "form-control"}),
             'salary': forms.TextInput(attrs={"class": "form-control"}),
-            'image': forms.FileInput(attrs={"class": "form-control"})
+            'profile_pic': forms.FileInput(attrs={"class": "form-control"})
         }
         labels = {
           'name':'Full Name '

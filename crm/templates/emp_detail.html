@@ -1,18 +1,43 @@
 {%extends 'base.html'%}
 {%block body_block%}
-
 <div class="container">
 
-    <div class=" row d-flex justify-content-center mt-3 mt-lg-4">
+    <div class=" mt-3 mt-lg-4">
         {%csrf_token%}
 
-        <div class="col-lg-2 col-md-4 col-sm-12 col-12">
-            <p class="fw-bold fs-3 text-start">Employee <br> Details</p><br>
+        <div class="">
+            <p class="fw-bold fs-3">Employee <br> Details</p><br>
         </div>
-
-        <div class="col-lg-10 col-md-8 col-sm-12 col-12 d-flex justify-content-around">
-            <div class="card text-center mt-3" style="width: 50%;">
-                <div class="card-body mt-3">
+        <div class="d-flex justify-content-center">
+            <div class="">
+                {%if data.profile_pic%}
+                <img src="{{data.profile_pic.url}}" class="rounded-4" style="width: fit-content;height: 400px;"
+                    alt="My image">
+                {%endif%}
+            </div>
+            <div class="card rounded-4" style="width: fit-content;">
+                <div class="row g-0 ">
+                    <div class="card-body col-lg-6 col-md-6 p-3 m-1" style="width: fit-content;">
+                        <p class="card-title fs-3 fw-bold">{{data.name}}<span
+                                class="card-text fs-5 fw-bolder text-secondary">&nbsp;({{data.department}})</span></p>
+                        <p class="card-text">Email : {{data.email}}</p>
+                        <p class="card-text">Age : {{data.age}}</p>
+                        <p class="card-text">Phone : {{data.phone}}</p>
+                        <p class="card-text">Salary : {{data.salary}}</p>
+                        <a href="{% url 'view_emp' %}" class="btn btn-dark">Go Back</a>
+                        <a href="{% url 'update_emp' data.id %}" class="btn btn-danger">Update</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="card text-center" style="width: 50%;">
+                <div class=" mb-5 d-flex justify-content-center">
+                    {%if data.profile_pic%}
+                    <img src="{{data.profile_pic.url}}" class="rounded-4" style="width: fit-content;height: 50vh;"
+                        alt="My image">
+                    {%endif%}
+                </div>
+                <div class="card-body ">
                     <p class="card-title fs-3 fw-bold">{{data.name}}<span
                             class="card-text fs-5 fw-bolder text-secondary">&nbsp;({{data.department}})</span></p>
                     <p class="card-text">Email : {{data.email}}</p>
@@ -21,10 +46,9 @@
                     <p class="card-text">Salary : {{data.salary}}</p>
                     <a href="{% url 'view_emp' %}" class="btn btn-dark">Go Back</a>
                     <a href="{% url 'update_emp' data.id %}" class="btn btn-danger">Update</a>
-                </div>
-            </div>
-        </div>
+            </div> -->
     </div>
+</div>
 </div>
 
 
