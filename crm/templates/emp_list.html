@@ -2,14 +2,41 @@
 {%block body_block%}
 
 <div class="container text-center">
-    <p class="fw-bold fs-3 text-white text-decoration-underline mt-5">Employee List</p><br>
+    <p class="fw-bold fs-3 text-decoration-underline mt-5">Employee List</p><br>
     <form class="d-flex mb-5" role="search" method="post">
         {%csrf_token%}
         <a class="btn btn-danger " href="{% url 'view_emp' %}">Refresh</a>
         <input class="form-control mx-2" name="box" value="{{name}}">
         <button class="btn btn-danger" type="submit">Search</button>
     </form>
-    <table class="table table-bordered ">
+    <style>
+        .mycard_img {
+            width: 90%;
+            object-fit: cover;
+            height: 400px;
+        }
+    </style>
+    <div class="container row">
+        {% for data in datas %}
+
+        <div class="col-lg-3 col-md-6 col-sm-6 mt-3 mycard  ">
+            <a href="{% url 'detail_emp' data.id %}" class="text-decoration-none text-dark" >
+                <div class=" mycard2 ">
+                    {%if data.profile_pic%}
+
+                    <img src="{{data.profile_pic.url}}" class=" mycard_img  img-fluid rounded-4" alt="My image">
+                    {%endif%}
+                </div>
+                <div class="fs-5 fw-bold">{{data.name}}</div>
+            </a>
+        </div>
+
+        {% endfor %}
+    </div>
+
+
+
+    <!-- <table class="table table-bordered ">
         <thead class="table-dark ">
             <tr>
                 <th>Id</th>
@@ -41,7 +68,9 @@
                     <i class="fa-solid fa-trash"></i></a>
             </td>
         </tr>
+    
         {% endfor %}
+    </table> -->
 </div>
 
 

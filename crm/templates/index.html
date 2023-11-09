@@ -14,10 +14,21 @@
         background: rgb(220, 53, 69);
         background: linear-gradient(90deg, rgba(220, 53, 69, 0.8268557422969187) 14%, rgba(220, 53, 69, 0.6896008403361344) 40%, rgba(220, 53, 69, 0.5187324929971988) 59%, rgba(255, 255, 255, 0) 100%);
     }
-</style>
 
-<div class="container text-center d-flex flex-column justify-content-end ">
-    <div class="">
+.btn-grp {
+    height: 85vh;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end;
+    align-items: stretch;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+    
+    </style>
+
+    <div class="btn-grp">
 
         <a class="btn btn-danger m-3 p-3 fw-bold fs-6 w-auto shadow-lg p-3" href="{% url 'add_emp' %}">Add an
             Employee</a>
@@ -29,7 +40,6 @@
             Employees</a>
 
     </div>
-</div>
 
 
 {%endblock%}
