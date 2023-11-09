@@ -14,6 +14,7 @@
             width: 90%;
             object-fit: cover;
             height: 400px;
+            filter: grayscale(90%);
         }
     </style>
     <div class="container row">
@@ -24,7 +25,7 @@
                 <div class=" mycard2 ">
                     {%if data.profile_pic%}
 
-                    <img src="{{data.profile_pic.url}}" class=" mycard_img  img-fluid rounded-4" alt="My image">
+                    <img src="{{data.profile_pic.url}}" class=" mycard_img  img-fluid rounded-4" alt="Employee Profile">
                     {%endif%}
                 </div>
                 <div class="fs-5 fw-bold">{{data.name}}</div>
