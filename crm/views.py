@@ -22,6 +22,7 @@ class SigninView(View):
             if user_obj:
                 print(User, "Found")
                 login(request,user_obj)
+                print(request.user)
                 return redirect('home')
         else:
             messages.error(request, "Invalid Input ..")
@@ -30,7 +31,9 @@ class SigninView(View):
 
 class SignoutView(View):
     def get(self, request, *args, **kwargs):
+        print(request.user)
         logout(request)
+        print(request.user)
         return redirect('auth_login')
 
 
@@ -55,8 +58,11 @@ class SignupView(View):
 
 class ViewHome(View):
     def get(self,request,*args,**kwargs):
-        return render(request,"index.html")
-
+        print(request.user)
+        if request.user == "AnonymousUser":
+            return render(request, "index.html")
+        else:
+            return render(request, "login.html", {"form": form})
 class ViewAddEmp(View):
     def get(self,request,*args,**kwargs):
         form=EmpModelForm()
