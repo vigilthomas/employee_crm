@@ -1,3 +1,4 @@
+from typing import Any
 from django import forms
 from django.contrib.auth.models import User
 from crm.models import *
@@ -24,7 +25,7 @@ class EmpModelForm(forms.ModelForm):
 class RegisterForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = "first_name,last_name,username,email,password"
+        fields = ["first_name", "last_name", "username", "email", "password"]
         widgets = {
             'first_name': forms.TextInput(attrs={"class": "form-control", 'placeholder': "Ex. Adam John"}),
             'last_name': forms.TextInput(attrs={"class": "form-control"}),
@@ -33,3 +34,15 @@ class RegisterForm(forms.ModelForm):
             'password': forms.PasswordInput(attrs={"class": "form-control"}),
 
         }
+
+    def clean(self):
+        cleaned_data = super().clean()
+        email = cleaned_data.get("email")
+        usr = User.objects.filter(email=email)
+        if usr:
+            self.add_error("email", "Email Already Exist")
+
+
+class LoginForm(forms.Form):
+    username = forms.CharField(widget=forms.TextInput(attrs={"class": "form-control"}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={"class": "form-control"}))

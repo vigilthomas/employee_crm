@@ -1,12 +1,57 @@
 from django.shortcuts import render,redirect
 from django.views import View
 from django.contrib import messages
-
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
 from crm.form import *
 from crm.models import *
 
 # Create your views here.
 
+class SigninView(View):
+    def get(self, request, *args, **kwargs):
+        form = LoginForm()
+        return render(request, "login.html", {"form": form})
+
+    def post(self, request, *args, **kwargs):
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            uname = form.cleaned_data.get("username")
+            passwd = form.cleaned_data.get("password")
+            user_obj = authenticate(request, username=uname, password=passwd)
+            if user_obj:
+                print(User, "Found")
+                login(request,user_obj)
+                return redirect('home')
+        else:
+            messages.error(request, "Invalid Input ..")
+            print("error")
+            return render(request, "login.html", {"form": form})
+
+class SignoutView(View):
+    def get(self, request, *args, **kwargs):
+        logout(request)
+        return redirect('auth_login')
+
+
+class SignupView(View):
+    def get(self, request, *args, **kwargs):
+        form = RegisterForm()
+        return render(request, "register.html", {"form": form})
+
+    def post(self, request, *args, **kwargs):
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            # form.save()
+            User.objects.create_user(**form.cleaned_data)
+            messages.success(request, " User Created Successfully..")
+            print("Success")
+            return redirect("auth_login")
+
+        else:
+            messages.error(request, "Failed to create user..")
+            print("error")
+            return render(request, "register.html", {"form": form})
 
 class ViewHome(View):
     def get(self,request,*args,**kwargs):
@@ -68,4 +113,4 @@ class ViewEmpUpdate(View):
         else:
             print("error")
             messages.error(request," Failed to Update Employee Details..")
-            return render(request,"emp_update.html",{"form":form})
+            return render(request,"emp_update.html",{"form":form})\

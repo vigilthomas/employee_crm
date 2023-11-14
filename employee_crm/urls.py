@@ -17,14 +17,18 @@ Including another URLconf
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from crm import views
+from crm.views import *
 
 urlpatterns = [
-    path('', views.ViewHome.as_view(), name="home"),
-    path('employee/addemp/', views.ViewAddEmp.as_view(), name="add_emp"),
-    path('employee/list/', views.ViewEmpList.as_view(), name="view_emp"),
-    path('employee/<int:pk>/details/', views.ViewEmpDetail.as_view(), name="detail_emp"),
-    path('employee/<int:pk>/delete/', views.ViewEmpDelete.as_view(), name="delete_emp"),
-    path('employee/<int:pk>/update/', views.ViewEmpUpdate.as_view(), name="update_emp")
+    path('', SigninView.as_view(), name="auth_login"),
+    path('auth/signout', SignoutView.as_view(), name="auth_logout"),
+    path('auth/signup', SignupView.as_view(), name="auth_signup"),
+    path('home', ViewHome.as_view(), name="home"),
+    path('employee/addemp/', ViewAddEmp.as_view(), name="add_emp"),
+    path('employee/list/', ViewEmpList.as_view(), name="view_emp"),
+    path('employee/<int:pk>/details/', ViewEmpDetail.as_view(), name="detail_emp"),
+    path('employee/<int:pk>/delete/', ViewEmpDelete.as_view(), name="delete_emp"),
+    path('employee/<int:pk>/update/',ViewEmpUpdate.as_view(), name="update_emp"),
+
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

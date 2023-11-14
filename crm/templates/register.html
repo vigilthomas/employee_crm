@@ -15,7 +15,6 @@
         crossorigin="anonymous"></script>
 </head>
 <style>
-
     body {
         background-color: #ffecec;
         height: 100vh;
@@ -29,33 +28,13 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-danger p-3">
         <div class="container">
-            <a class="navbar-brand text-white fw-bold" href="{% url 'home' %}">ECRM</a>
-            <button class="navbar-toggler m-2 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand text-white fw-bold" href="{% url 'auth_login' %}">ECRM</a>
+            <button class="navbar-toggler m-2 border-0" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <form class="d-flex mx-4 p-2" role="search" method="post" action="{% url 'view_emp' %}">
-                    {%csrf_token%}
-                    <input class="form-control p-2" style="border: none;border-radius:20px 0  0 20px;" name="box"
-                        placeholder=" Search Employee Here..">
-                    <button class="btn btn-light" style="border: none;border-radius: 0 20px 20px 0;" type="submit">Search</button>
-                </form>
-                <ul class="navbar-nav ms-auto fs-6 fw-bold">
-                    <li class="nav-item mx-2">
-                        <a class="nav-link text-white text-center " href="{% url 'home' %}">Home</a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link text-white text-center " href="{% url 'view_emp' %}"> List</a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link text-white text-center " href="{% url 'add_emp' %}">Add</a>
-                    </li>
-                    
-                    <li class="nav-item mx-2">
-                        <a class="nav-link text-white text-center " href="{% url 'auth_logout' %}"> Logout</a>
-                    </li>
-                </ul>
+            
             </div>
         </div>
     </nav>
@@ -76,11 +55,25 @@
         {% endif %}
     </div>
 
+<div class=" d-flex justify-content-center">
+    <form class="fs-6 fw-normal bg-light p-5"  style="width: 45%;" method="post" enctype="multipart/form-data">
+        {%csrf_token%}
 
-
-    {%block body_block%}
-
-    {%endblock%}
+        <p class="fw-bold fs-3 ">Sign Up </p>
+        <hr class="border border-danger border-3 opacity-75 w-25">
+        <br>
+        {{form.as_p}}
+        <div class="d-flex justify-content-center ">
+            <button type="submit" class="btn btn-danger mt-3 w-50">Sign Up</button>
+        </div>
+        <div class="text-center mt-3">
+            <p> Or <br>
+                Already a User
+            </p>
+            <a href="{% url 'auth_login' %}" class="btn btn-dark w-25">Login</a>
+        </div>
+    </form>
+</div>
 </body>
 
 </html>
