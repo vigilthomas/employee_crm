@@ -9,11 +9,11 @@ class EmpModelForm(forms.ModelForm):
         model = Employees
         fields = "__all__"
         widgets = {
-            'name': forms.TextInput(attrs={"class": "form-control", 'placeholder': "Ex. Adam John"}),
-            'department': forms.TextInput(attrs={"class": "form-control"}),
-            'email': forms.TextInput(attrs={"class": "form-control"}),
-            'phone': forms.TextInput(attrs={"class": "form-control"}),
-            'age': forms.TextInput(attrs={"class": "form-control"}),
+            'name': forms.TextInput(attrs={"class": "form-control ", 'placeholder': "Ex. Adam John"}),
+            'department': forms.TextInput(attrs={"class": "form-control "}),
+            'email': forms.TextInput(attrs={"class": "form-control "}),
+            'phone': forms.TextInput(attrs={"class": "form-control "}),
+            'age': forms.TextInput(attrs={"class": "form-control "}),
             'salary': forms.TextInput(attrs={"class": "form-control"}),
             'profile_pic': forms.FileInput(attrs={"class": "form-control"})
         }
@@ -27,8 +27,8 @@ class RegisterForm(forms.ModelForm):
         model = User
         fields = ["first_name", "last_name", "username", "email", "password"]
         widgets = {
-            'first_name': forms.TextInput(attrs={"class": "form-control", 'placeholder': "Ex. Adam John"}),
-            'last_name': forms.TextInput(attrs={"class": "form-control"}),
+            'first_name': forms.TextInput(attrs={"class": "form-control col-lg-6", 'placeholder': "Ex. Adam John"}),
+            'last_name': forms.TextInput(attrs={"class": "form-control col-lg-6"}),
             'username': forms.TextInput(attrs={"class": "form-control"}),
             'email': forms.EmailInput(attrs={"class": "form-control"}),
             'password': forms.PasswordInput(attrs={"class": "form-control"}),

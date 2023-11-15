@@ -1,0 +1,12 @@
+body {
+  background: rgb(173,0,0);
+background: linear-gradient(90deg, rgb(135, 0, 0) 18%, rgba(255,0,0,1) 57%, rgba(119,0,0,1) 91%);
+  height: 100vh;
+}
+
+.errorlist {
+  color: red;
+}
+.helptext {
+  color: green;
+}
