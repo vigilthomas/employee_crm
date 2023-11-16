@@ -5,6 +5,20 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from crm.form import *
 from crm.models import *
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import never_cache
+
+
+def login_required(fn):
+    def wrapper(request,*args,**kwargs):
+        if not request.user.is_authenticated:
+            messages.error(request,"Please Login to Access the data....")
+            return redirect('auth_login')
+        else:
+            return fn(request,*args,**kwargs)
+    return wrapper
+
+decs=[login_required,never_cache]
 
 # Create your views here.
 
@@ -56,15 +70,13 @@ class SignupView(View):
             print("error")
             return render(request, "register.html", {"form": form})
 
+@method_decorator(decs,name="dispatch")
 class ViewHome(View):
     def get(self,request,*args,**kwargs):
-         if request.user.is_authenticated:   
-            print(request.user)
-            return render(request, "index.html")
-         else:
-            messages.error(request, "Please Login to Access")
-            return redirect('auth_login')
+        return render(request,'index.html')
 
+
+@method_decorator(decs, name="dispatch")
 class ViewAddEmp(View):
     def get(self,request,*args,**kwargs):
         form=EmpModelForm()
@@ -81,6 +93,8 @@ class ViewAddEmp(View):
             print("error")
             return render(request,"emp_create.html",{"form":form})
 
+
+@method_decorator(decs, name="dispatch")
 class ViewEmpList(View):
     def get(self,request,*args,**kwargs):
         datas=Employees.objects.all()
@@ -90,12 +104,16 @@ class ViewEmpList(View):
         datas=Employees.objects.filter(name__icontains=name)
         return render(request,"emp_list.html",{"datas":datas,'name':name})
 
+
+@method_decorator(decs, name="dispatch")
 class ViewEmpDetail(View):
     def get(self,request,*args,**kwargs):
         id=kwargs.get("pk")
         qs=Employees.objects.get(id=id)
         return render(request,"emp_detail.html",{"data":qs})
-    
+
+
+@method_decorator(decs, name="dispatch")
 class ViewEmpDelete(View):
     def get(self,request,*args,**kwargs):
         id=kwargs.get("pk")
@@ -103,6 +121,8 @@ class ViewEmpDelete(View):
         messages.success(request," Employee Deleted Successfully..")
         return redirect("view_emp")
 
+
+@method_decorator(decs, name="dispatch")
 class ViewEmpUpdate(View):
     def get(self,request,*args,**kwargs):
         id=kwargs.get("pk")
