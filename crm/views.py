@@ -97,8 +97,14 @@ class ViewAddEmp(View):
 @method_decorator(decs, name="dispatch")
 class ViewEmpList(View):
     def get(self,request,*args,**kwargs):
-        datas=Employees.objects.all()
-        return render(request,"emp_list.html",{"datas":datas})
+        qs=Employees.objects.all()
+        departments=Employees.objects.all().values_list("department",flat=True).distinct()
+        print(departments)
+        if "department" in request.GET:
+            dept = request.GET.get("department")
+            qs=qs.filter(department__iexact=dept)
+            
+        return render(request, "emp_list.html", {"datas": qs, "departments": departments})
     def post(self,request,*args,**kwargs):
         name=request.POST.get("box")
         datas=Employees.objects.filter(name__icontains=name)

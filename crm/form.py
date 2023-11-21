@@ -13,7 +13,7 @@ class EmpModelForm(forms.ModelForm):
             'department': forms.TextInput(attrs={"class": "form-control "}),
             'email': forms.TextInput(attrs={"class": "form-control "}),
             'phone': forms.TextInput(attrs={"class": "form-control "}),
-            'age': forms.TextInput(attrs={"class": "form-control "}),
+            'dob': forms.DateInput(attrs={"class": "form-control ","type":"date"}),
             'salary': forms.TextInput(attrs={"class": "form-control"}),
             'profile_pic': forms.FileInput(attrs={"class": "form-control"})
         }

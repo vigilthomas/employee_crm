@@ -8,7 +8,7 @@
         {%csrf_token%}
         <div class="col-lg-4 col-md-6 col-sm-6 d-flex justify-content-lg-end justify-content-sm-center">
             {%if data.profile_pic%}
-            <img src="{{data.profile_pic.url}}" class="rounded-4" style="width: fit-content;height: 400px;"
+            <img src="{{data.profile_pic.url}}" class="rounded-4" style="width: fit-content; max-width: 100%;object-fit: cover ;height: 400px;"
                 alt="Employee Profile">
             {%endif%}
         </div>
@@ -19,7 +19,7 @@
                         <p class="card-title fs-3 fw-bold">{{data.name}}<span
                                 class="card-text fs-5 fw-bolder text-secondary">&nbsp;({{data.department}})</span></p>
                         <p class="card-text">Email : {{data.email}}</p>
-                        <p class="card-text">Age : {{data.age}}</p>
+                        <p class="card-text">DOB : {{data.dob}}</p>
                         <p class="card-text">Phone : {{data.phone}}</p>
                         <p class="card-text">Salary : {{data.salary}}</p>
                         <a href="{% url 'view_emp' %}" class="btn btn-outline-dark mt-2">Go Back</a><br>

@@ -8,7 +8,7 @@ class Employees(models.Model):
     department = models.CharField(max_length=100)
     salary = models.PositiveBigIntegerField()
     email = models.EmailField(unique=True)
-    age = models.PositiveBigIntegerField()
+    dob = models.DateField(null=True)
     phone = models.IntegerField()
     profile_pic = models.ImageField(upload_to="crm/static/emp_img", null=True)
 
