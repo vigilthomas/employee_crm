@@ -147,4 +147,4 @@ class ViewEmpUpdate(View):
         else:
             print("error")
             messages.error(request," Failed to Update Employee Details..")
-            return render(request,"emp_update.html",{"form":form})\
+            return render(request,"emp_update.html",{"form":form})
